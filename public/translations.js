@@ -3,6 +3,7 @@ const translations = {
     en: {
         meta_title: "FiveM IP Finder | Find CFX.re Server IP Addresses Instantly",
         meta_description: "Discover FiveM server IP addresses instantly with our free CFX.re IP finder tool. Find GTA V FiveM server IPs, ports, and player lists quickly and easily.",
+        meta_keywords: "fivem ip finder, cfx ip finder, cfx.re ip finder, fivem server ip, gta v fivem ip, find fivem server ip, cfx server finder, fivem ip lookup, fivem server finder, gta 5 fivem ip, fivem ip address finder, cfx.re server ip",
         title: "FiveM IP Finder",
         subtitle: "Discover FiveM server IP addresses from CFX.re URLs instantly",
         input_placeholder: "Enter CFX.re URL or Server ID (e.g., cfx.re/join/abc123)",
@@ -25,6 +26,7 @@ const translations = {
     tr: {
         meta_title: "FiveM IP Bulucu | CFX.re Sunucu IP Adreslerini Anında Bulun",
         meta_description: "Ücretsiz CFX.re IP bulucu aracımızla FiveM sunucu IP adreslerini anında keşfedin. GTA V FiveM sunucu IP'lerini, portlarını ve oyuncu listelerini hızlıca bulun.",
+        meta_keywords: "fivem ip bulucu, cfx ip bulucu, cfx.re ip bulucu, fivem sunucu ip, gta v fivem ip, fivem sunucu ip bul, cfx sunucu bulucu, fivem ip adresi bulma, fivem sunucu bulma, gta 5 fivem ip, fivem türkçe ip bulucu",
         title: "FiveM IP Bulucu",
         subtitle: "CFX.re URL'lerinden FiveM sunucu IP adreslerini anında keşfedin",
         input_placeholder: "CFX.re URL'sini veya Server ID'sini girin (örn: cfx.re/join/abc123)",
@@ -44,9 +46,33 @@ const translations = {
         copied: "Kopyalandı!",
         no_players: "Çevrimiçi oyuncu yok"
     },
+    da: {
+        meta_title: "FiveM IP Finder | Find CFX.re Server IP-adresser Øjeblikkeligt",
+        meta_description: "Opdag FiveM server IP-adresser øjeblikkeligt med vores gratis CFX.re IP finder værktøj. Find GTA V FiveM server IP'er, porte og spillerlister hurtigt og nemt.",
+        meta_keywords: "fivem ip finder, cfx ip finder, cfx.re ip finder, fivem server ip, gta v fivem ip, find fivem server ip, cfx server finder, fivem ip opslag, fivem server finder, gta 5 fivem ip, fivem dansk ip finder",
+        title: "FiveM IP Finder",
+        subtitle: "Opdag FiveM server IP-adresser fra CFX.re URLs øjeblikkeligt",
+        input_placeholder: "Indtast CFX.re URL eller Server ID (f.eks. cfx.re/join/abc123)",
+        search_button: "🔍 Find IP",
+        label_ip: "IP-adresse:",
+        label_port: "Port:",
+        label_players: "Spillere:",
+        label_server_id: "Server ID:",
+        label_connect_command: "Forbindelseskommando:",
+        players_online: "👥 Spillere Online",
+        loading: "Henter serverinformation...",
+        footer_text: "Professionelt værktøj til at finde FiveM server IP-adresser",
+        footer_note: "Understøtter URL-format: cfx.re/join/{server_id} eller bare server ID",
+        error_invalid_format: "Ugyldigt format! Eksempel: cfx.re/join/abc123 eller bare abc123",
+        error_not_found: "Server ikke fundet!",
+        error_general: "Der opstod en fejl. Prøv venligst igen.",
+        copied: "Kopieret!",
+        no_players: "Ingen spillere online"
+    },
     es: {
         meta_title: "Buscador de IP de FiveM | Encuentra direcciones IP de servidores CFX.re al instante",
         meta_description: "Descubre direcciones IP de servidores FiveM al instante con nuestra herramienta gratuita de búsqueda de IP CFX.re.",
+        meta_keywords: "buscador ip fivem, cfx buscador ip, cfx.re buscador ip, fivem servidor ip, gta v fivem ip, encontrar ip servidor fivem, buscador servidor cfx, buscar ip fivem, encontrar servidor fivem, gta 5 fivem ip",
         title: "Buscador de IP de FiveM",
         subtitle: "Descubre direcciones IP de servidores FiveM desde URLs de CFX.re al instante",
         input_placeholder: "Ingrese la URL de CFX.re o el ID del servidor (ej: cfx.re/join/abc123)",
@@ -69,6 +95,7 @@ const translations = {
     fr: {
         meta_title: "Chercheur d'IP FiveM | Trouver les adresses IP des serveurs CFX.re instantanément",
         meta_description: "Découvrez instantanément les adresses IP des serveurs FiveM avec notre outil gratuit de recherche d'IP CFX.re.",
+        meta_keywords: "chercheur ip fivem, cfx chercheur ip, cfx.re chercheur ip, fivem serveur ip, gta v fivem ip, trouver ip serveur fivem, chercheur serveur cfx, recherche ip fivem, trouver serveur fivem, gta 5 fivem ip",
         title: "Chercheur d'IP FiveM",
         subtitle: "Découvrez les adresses IP des serveurs FiveM à partir des URLs CFX.re instantanément",
         input_placeholder: "Entrez l'URL CFX.re ou l'ID du serveur (ex: cfx.re/join/abc123)",
@@ -91,6 +118,7 @@ const translations = {
     de: {
         meta_title: "FiveM IP-Finder | Finden Sie CFX.re Server-IP-Adressen sofort",
         meta_description: "Entdecken Sie FiveM-Server-IP-Adressen sofort mit unserem kostenlosen CFX.re IP-Finder-Tool.",
+        meta_keywords: "fivem ip finder, cfx ip finder, cfx.re ip finder, fivem server ip, gta v fivem ip, fivem server ip finden, cfx server finder, fivem ip suche, fivem server finder, gta 5 fivem ip",
         title: "FiveM IP-Finder",
         subtitle: "Entdecken Sie FiveM-Server-IP-Adressen aus CFX.re-URLs sofort",
         input_placeholder: "Geben Sie die CFX.re-URL oder Server-ID ein (z.B.: cfx.re/join/abc123)",
@@ -113,6 +141,7 @@ const translations = {
     pt: {
         meta_title: "Localizador de IP do FiveM | Encontre endereços IP de servidores CFX.re instantaneamente",
         meta_description: "Descubra endereços IP de servidores FiveM instantaneamente com nossa ferramenta gratuita de localização de IP CFX.re.",
+        meta_keywords: "localizador ip fivem, cfx localizador ip, cfx.re localizador ip, fivem servidor ip, gta v fivem ip, encontrar ip servidor fivem, localizador servidor cfx, busca ip fivem, encontrar servidor fivem, gta 5 fivem ip",
         title: "Localizador de IP do FiveM",
         subtitle: "Descubra endereços IP de servidores FiveM a partir de URLs CFX.re instantaneamente",
         input_placeholder: "Digite a URL CFX.re ou ID do servidor (ex: cfx.re/join/abc123)",
@@ -135,6 +164,7 @@ const translations = {
     ru: {
         meta_title: "Поиск IP FiveM | Мгновенно находите IP-адреса серверов CFX.re",
         meta_description: "Мгновенно находите IP-адреса серверов FiveM с помощью нашего бесплатного инструмента поиска IP CFX.re.",
+        meta_keywords: "поиск ip fivem, cfx поиск ip, cfx.re поиск ip, fivem сервер ip, gta v fivem ip, найти ip сервера fivem, поиск сервера cfx, поиск ip fivem, найти сервер fivem, gta 5 fivem ip",
         title: "Поиск IP FiveM",
         subtitle: "Мгновенно находите IP-адреса серверов FiveM из URL-адресов CFX.re",
         input_placeholder: "Введите URL CFX.re или ID сервера (напр.: cfx.re/join/abc123)",
@@ -157,6 +187,7 @@ const translations = {
     pl: {
         meta_title: "Wyszukiwarka IP FiveM | Znajdź adresy IP serwerów CFX.re natychmiast",
         meta_description: "Odkryj adresy IP serwerów FiveM natychmiast dzięki naszemu darmowemu narzędziu do wyszukiwania IP CFX.re.",
+        meta_keywords: "wyszukiwarka ip fivem, cfx wyszukiwarka ip, cfx.re wyszukiwarka ip, fivem serwer ip, gta v fivem ip, znaleźć ip serwera fivem, wyszukiwarka serwera cfx, szukaj ip fivem, znaleźć serwer fivem, gta 5 fivem ip",
         title: "Wyszukiwarka IP FiveM",
         subtitle: "Odkryj adresy IP serwerów FiveM z URL-i CFX.re natychmiast",
         input_placeholder: "Wprowadź URL CFX.re lub ID serwera (np.: cfx.re/join/abc123)",
@@ -179,6 +210,7 @@ const translations = {
     it: {
         meta_title: "Ricerca IP FiveM | Trova indirizzi IP dei server CFX.re istantaneamente",
         meta_description: "Scopri gli indirizzi IP dei server FiveM istantaneamente con il nostro strumento gratuito di ricerca IP CFX.re.",
+        meta_keywords: "ricerca ip fivem, cfx ricerca ip, cfx.re ricerca ip, fivem server ip, gta v fivem ip, trovare ip server fivem, ricerca server cfx, cercare ip fivem, trovare server fivem, gta 5 fivem ip",
         title: "Ricerca IP FiveM",
         subtitle: "Scopri gli indirizzi IP dei server FiveM dagli URL CFX.re istantaneamente",
         input_placeholder: "Inserisci l'URL CFX.re o l'ID del server (es.: cfx.re/join/abc123)",
@@ -201,6 +233,7 @@ const translations = {
     nl: {
         meta_title: "FiveM IP Zoeker | Vind CFX.re Server IP-adressen Onmiddellijk",
         meta_description: "Ontdek FiveM server IP-adressen onmiddellijk met onze gratis CFX.re IP zoeker tool.",
+        meta_keywords: "fivem ip zoeker, cfx ip zoeker, cfx.re ip zoeker, fivem server ip, gta v fivem ip, vind fivem server ip, cfx server zoeker, zoek fivem ip, vind fivem server, gta 5 fivem ip",
         title: "FiveM IP Zoeker",
         subtitle: "Ontdek FiveM server IP-adressen uit CFX.re URLs onmiddellijk",
         input_placeholder: "Voer CFX.re URL of Server ID in (bijv.: cfx.re/join/abc123)",

@@ -96,6 +96,10 @@ function updateMetaTags(lang) {
         updateMetaTag('property', 'og:description', lang.meta_description);
         updateMetaTag('property', 'twitter:description', lang.meta_description);
     }
+
+    if (lang.meta_keywords) {
+        updateMetaTag('name', 'keywords', lang.meta_keywords);
+    }
 }
 
 function updateMetaTag(attr, name, content) {
