@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FiveM IP Finder | CFX.re</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔍 FiveM IP Finder</h1>
+            <p class="subtitle">CFX.re sunucu IP adreslerini kolayca bulun</p>
+        </header>
+
+        <div class="search-box">
+            <input
+                type="text"
+                id="serverInput"
+                placeholder="CFX.re URL'sini veya Server ID'sini girin (örn: cfx.re/join/abc123)"
+                autocomplete="off"
+            />
+            <button id="searchBtn">IP Bul</button>
+        </div>
+
+        <div id="result" class="result hidden">
+            <div class="result-header">
+                <h2 id="serverName">Sunucu Adı</h2>
+            </div>
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="label">IP Adresi:</span>
+                    <span class="value" id="serverIP">-</span>
+                    <button class="copy-btn" onclick="copyToClipboard('serverIP')">📋</button>
+                </div>
+                <div class="info-item">
+                    <span class="label">Port:</span>
+                    <span class="value" id="serverPort">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Oyuncular:</span>
+                    <span class="value" id="serverPlayers">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Server ID:</span>
+                    <span class="value" id="serverID">-</span>
+                    <button class="copy-btn" onclick="copyToClipboard('serverID')">📋</button>
+                </div>
+            </div>
+            <div class="connect-info">
+                <div class="info-item full-width">
+                    <span class="label">Bağlantı Komutu:</span>
+                    <span class="value" id="connectCommand">-</span>
+                    <button class="copy-btn" onclick="copyToClipboard('connectCommand')">📋</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Sunucu bilgileri alınıyor...</p>
+        </div>
+
+        <div id="error" class="error hidden">
+            <p id="errorMessage"></p>
+        </div>
+
+        <footer>
+            <p>FiveM sunucu IP adreslerini bulmak için tasarlandı</p>
+            <p class="note">Not: URL formatı: <code>cfx.re/join/{server_id}</code> veya sadece server ID</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
