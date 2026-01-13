@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
 const path = require('path');
+const analytics = require('./analytics');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -10,6 +11,15 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
+
+// Analytics tracking middleware
+app.use((req, res, next) => {
+    // Track page visits (except for static assets and API calls)
+    if (!req.path.startsWith('/api/') && !req.path.match(/\.(css|js|png|jpg|jpeg|gif|ico|svg)$/)) {
+        analytics.trackVisit(req, req.path);
+    }
+    next();
+});
 
 // Serve static files
 app.get('/', (req, res) => {
@@ -99,16 +109,38 @@ app.get('/api/server/:serverId', async (req, res) => {
             players: players
         };
 
+        // Track successful search
+        analytics.trackSearch(req, serverId, true);
+
         res.json(responseData);
 
     } catch (error) {
         console.error('Error fetching server data:', error.message);
+
+        // Track failed search
+        analytics.trackSearch(req, serverId, false);
+
         res.status(404).json({
             success: false,
             error: 'Server not found or API unavailable',
             details: error.message
         });
     }
+});
+
+// Analytics API endpoint
+app.get('/api/analytics/stats', (req, res) => {
+    const stats = analytics.getStats();
+    if (stats) {
+        res.json(stats);
+    } else {
+        res.status(500).json({ error: 'Failed to fetch analytics' });
+    }
+});
+
+// Admin dashboard
+app.get('/admin', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'admin.html'));
 });
 
 // Health check endpoint
