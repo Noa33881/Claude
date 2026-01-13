@@ -70,6 +70,20 @@ app.get('/api/server/:serverId', async (req, res) => {
         const endpoint = data.connectEndPoints?.[0] || '';
         const [ip, port] = endpoint.split(':');
 
+        // Extract players list
+        const players = [];
+        if (data.players && Array.isArray(data.players)) {
+            data.players.forEach(player => {
+                if (player.name) {
+                    players.push({
+                        name: player.name,
+                        id: player.id || player.identifiers?.[0] || null,
+                        ping: player.ping || null
+                    });
+                }
+            });
+        }
+
         const responseData = {
             success: true,
             server: {
@@ -81,7 +95,8 @@ app.get('/api/server/:serverId', async (req, res) => {
                 maxPlayers: data.sv_maxclients || 0,
                 connectCommand: `connect ${ip}:${port || '30120'}`,
                 endpoint: endpoint
-            }
+            },
+            players: players
         };
 
         res.json(responseData);

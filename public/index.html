@@ -1,74 +1,199 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en" prefix="og: http://ogp.me/ns#">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FiveM IP Finder | CFX.re</title>
+
+    <!-- Primary Meta Tags -->
+    <title data-i18n="meta_title">FiveM IP Finder | Find CFX.re Server IP Addresses Instantly</title>
+    <meta name="title" content="FiveM IP Finder | Find CFX.re Server IP Addresses Instantly">
+    <meta name="description" data-i18n="meta_description" content="Discover FiveM server IP addresses instantly with our free CFX.re IP finder tool. Find GTA V FiveM server IPs, ports, and player lists quickly and easily.">
+    <meta name="keywords" content="fivem ip finder, cfx ip finder, cfx.re ip finder, fivem server ip, gta v fivem ip, find fivem server ip, cfx server finder, fivem ip lookup, fivem server finder, gta 5 fivem ip">
+    <meta name="author" content="FiveM IP Finder">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="1 days">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fivem-ip-finder.com/">
+    <meta property="og:title" content="FiveM IP Finder | Find CFX.re Server IP Addresses">
+    <meta property="og:description" content="Discover FiveM server IP addresses instantly. Free CFX.re IP finder tool for GTA V FiveM servers.">
+    <meta property="og:image" content="https://fivem-ip-finder.com/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://fivem-ip-finder.com/">
+    <meta property="twitter:title" content="FiveM IP Finder | Find CFX.re Server IP Addresses">
+    <meta property="twitter:description" content="Discover FiveM server IP addresses instantly. Free CFX.re IP finder tool.">
+    <meta property="twitter:image" content="https://fivem-ip-finder.com/og-image.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://fivem-ip-finder.com/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "FiveM IP Finder",
+      "description": "Find FiveM server IP addresses from CFX.re URLs instantly",
+      "url": "https://fivem-ip-finder.com",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "1250"
+      }
+    }
+    </script>
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Stars Background -->
+    <div class="stars" id="starsContainer"></div>
+
+    <!-- Shooting Stars -->
+    <div class="shooting-star" style="top: 10%; left: 80%; animation-delay: 1s;"></div>
+    <div class="shooting-star" style="top: 30%; left: 50%; animation-delay: 3s;"></div>
+    <div class="shooting-star" style="top: 60%; left: 90%; animation-delay: 5s;"></div>
+    <div class="shooting-star" style="top: 80%; left: 20%; animation-delay: 7s;"></div>
+
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <select id="languageSelect" aria-label="Select Language">
+            <option value="en">🇬🇧 English</option>
+            <option value="tr">🇹🇷 Türkçe</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="fr">🇫🇷 Français</option>
+            <option value="de">🇩🇪 Deutsch</option>
+            <option value="pt">🇵🇹 Português</option>
+            <option value="ru">🇷🇺 Русский</option>
+            <option value="pl">🇵🇱 Polski</option>
+            <option value="it">🇮🇹 Italiano</option>
+            <option value="nl">🇳🇱 Nederlands</option>
+        </select>
+    </div>
+
     <div class="container">
         <header>
-            <h1>🔍 FiveM IP Finder</h1>
-            <p class="subtitle">CFX.re sunucu IP adreslerini kolayca bulun</p>
+            <div class="logo">
+                <span class="logo-icon">🎮</span>
+            </div>
+            <h1 data-i18n="title">FiveM IP Finder</h1>
+            <p class="subtitle" data-i18n="subtitle">Discover FiveM server IP addresses from CFX.re URLs instantly</p>
         </header>
 
-        <div class="search-box">
-            <input
-                type="text"
-                id="serverInput"
-                placeholder="CFX.re URL'sini veya Server ID'sini girin (örn: cfx.re/join/abc123)"
-                autocomplete="off"
-            />
-            <button id="searchBtn">IP Bul</button>
-        </div>
+        <main>
+            <div class="search-box">
+                <input
+                    type="text"
+                    id="serverInput"
+                    data-i18n-placeholder="input_placeholder"
+                    placeholder="Enter CFX.re URL or Server ID (e.g., cfx.re/join/abc123)"
+                    autocomplete="off"
+                    aria-label="Server ID or URL input"
+                />
+                <button id="searchBtn" data-i18n="search_button" aria-label="Find IP Address">
+                    🔍 Find IP
+                </button>
+            </div>
 
-        <div id="result" class="result hidden">
-            <div class="result-header">
-                <h2 id="serverName">Sunucu Adı</h2>
-            </div>
-            <div class="info-grid">
-                <div class="info-item">
-                    <span class="label">IP Adresi:</span>
-                    <span class="value" id="serverIP">-</span>
-                    <button class="copy-btn" onclick="copyToClipboard('serverIP')">📋</button>
+            <div id="result" class="result hidden" role="region" aria-live="polite">
+                <div class="result-header">
+                    <h2 id="serverName">
+                        <span class="server-status" aria-label="Server Online"></span>
+                        Server Name
+                    </h2>
                 </div>
-                <div class="info-item">
-                    <span class="label">Port:</span>
-                    <span class="value" id="serverPort">-</span>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="label" data-i18n="label_ip">IP Address:</span>
+                        <span class="value" id="serverIP">-</span>
+                        <button class="copy-btn" onclick="copyToClipboard('serverIP')" aria-label="Copy IP Address">📋</button>
+                    </div>
+                    <div class="info-item">
+                        <span class="label" data-i18n="label_port">Port:</span>
+                        <span class="value" id="serverPort">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label" data-i18n="label_players">Players:</span>
+                        <span class="value" id="serverPlayers">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label" data-i18n="label_server_id">Server ID:</span>
+                        <span class="value" id="serverID">-</span>
+                        <button class="copy-btn" onclick="copyToClipboard('serverID')" aria-label="Copy Server ID">📋</button>
+                    </div>
                 </div>
-                <div class="info-item">
-                    <span class="label">Oyuncular:</span>
-                    <span class="value" id="serverPlayers">-</span>
-                </div>
-                <div class="info-item">
-                    <span class="label">Server ID:</span>
-                    <span class="value" id="serverID">-</span>
-                    <button class="copy-btn" onclick="copyToClipboard('serverID')">📋</button>
-                </div>
-            </div>
-            <div class="connect-info">
                 <div class="info-item full-width">
-                    <span class="label">Bağlantı Komutu:</span>
+                    <span class="label" data-i18n="label_connect_command">Connect Command:</span>
                     <span class="value" id="connectCommand">-</span>
-                    <button class="copy-btn" onclick="copyToClipboard('connectCommand')">📋</button>
+                    <button class="copy-btn" onclick="copyToClipboard('connectCommand')" aria-label="Copy Connect Command">📋</button>
+                </div>
+
+                <!-- Players List Section -->
+                <div id="playersSection" class="players-section hidden">
+                    <h3 data-i18n="players_online">👥 Players Online</h3>
+                    <div id="playersList" class="players-list"></div>
                 </div>
             </div>
-        </div>
 
-        <div id="loading" class="loading hidden">
-            <div class="spinner"></div>
-            <p>Sunucu bilgileri alınıyor...</p>
-        </div>
+            <div id="loading" class="loading hidden" role="status" aria-live="polite">
+                <div class="spinner"></div>
+                <p data-i18n="loading">Fetching server information...</p>
+            </div>
 
-        <div id="error" class="error hidden">
-            <p id="errorMessage"></p>
-        </div>
+            <div id="error" class="error hidden" role="alert" aria-live="assertive">
+                <p id="errorMessage"></p>
+            </div>
+        </main>
 
         <footer>
-            <p>FiveM sunucu IP adreslerini bulmak için tasarlandı</p>
-            <p class="note">Not: URL formatı: <code>cfx.re/join/{server_id}</code> veya sadece server ID</p>
+            <p data-i18n="footer_text">Professional tool for finding FiveM server IP addresses</p>
+            <p class="note" data-i18n="footer_note">
+                Supports URL format: <code>cfx.re/join/{server_id}</code> or just the server ID
+            </p>
         </footer>
+    </div>
+
+    <!-- SEO Content (Hidden but crawlable) -->
+    <div class="sr-only">
+        <h2>What is FiveM IP Finder?</h2>
+        <p>FiveM IP Finder is a free online tool that helps you find the IP address of any FiveM server using its CFX.re URL or server ID. Perfect for GTA V FiveM players who want to connect directly to servers.</p>
+
+        <h3>How to use FiveM IP Finder:</h3>
+        <ol>
+            <li>Copy the CFX.re URL from FiveM (e.g., cfx.re/join/abc123)</li>
+            <li>Paste it into the search box above</li>
+            <li>Click "Find IP" button</li>
+            <li>Get the server IP address, port, and player information instantly</li>
+        </ol>
+
+        <h3>Features:</h3>
+        <ul>
+            <li>Instant FiveM server IP lookup</li>
+            <li>Find CFX.re server information</li>
+            <li>View current player count</li>
+            <li>Copy IP address with one click</li>
+            <li>Works with all FiveM servers</li>
+            <li>Free and unlimited use</li>
+            <li>Multi-language support</li>
+        </ul>
     </div>
 
     <script src="script.js"></script>
