@@ -53,14 +53,18 @@ async function findServerIP() {
     hideError();
 
     try {
-        // Fetch server data from FiveM API
-        const response = await fetch(`https://servers-frontend.fivem.net/api/servers/single/${serverID}`);
+        // Fetch server data from our PHP proxy
+        const response = await fetch(`api.php?id=${serverID}`);
 
         if (!response.ok) {
             throw new Error('Sunucu bulunamadı!');
         }
 
         const data = await response.json();
+
+        if (data.error) {
+            throw new Error(data.error);
+        }
 
         if (!data || !data.Data) {
             throw new Error('Sunucu bilgileri alınamadı!');
