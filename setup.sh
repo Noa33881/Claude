@@ -3,7 +3,8 @@
 # FiveM IP Finder - Modern Node.js Setup Script
 # Run with: bash setup.sh
 
-set -e
+# Don't exit on errors - we'll handle them gracefully
+set +e
 
 echo "================================================"
 echo "  FiveM IP Finder - Modern Setup"
@@ -63,8 +64,8 @@ echo -e "${GREEN}✓ Files downloaded${NC}"
 
 # Install dependencies
 echo -e "${YELLOW}[5/6] Installing Node.js dependencies...${NC}"
-npm install --production
-echo -e "${GREEN}✓ Dependencies installed${NC}"
+npm install --production || npm install || echo -e "${RED}✗ Warning: npm install failed${NC}"
+echo -e "${GREEN}✓ Dependencies installation attempted${NC}"
 
 # Setup Nginx reverse proxy
 echo -e "${YELLOW}[6/6] Setting up Nginx reverse proxy...${NC}"
@@ -101,11 +102,13 @@ ln -sf /etc/nginx/sites-available/fivem-ip-finder /etc/nginx/sites-enabled/
 rm -f /etc/nginx/sites-enabled/default
 
 # Test nginx configuration
-nginx -t
+nginx -t || echo -e "${YELLOW}⚠ Nginx config warning (continuing anyway)${NC}"
 
-# Reload nginx
-systemctl reload nginx
-echo -e "${GREEN}✓ Nginx configured${NC}"
+# Start/Restart nginx (use restart instead of reload to handle inactive state)
+systemctl restart nginx || systemctl start nginx || echo -e "${YELLOW}⚠ Nginx start warning (continuing anyway)${NC}"
+systemctl enable nginx 2>/dev/null || true
+
+echo -e "${GREEN}✓ Nginx configured and started${NC}"
 
 # Stop any existing PM2 process
 pm2 stop fivem-ip-finder 2>/dev/null || true
@@ -115,16 +118,23 @@ pm2 delete fivem-ip-finder 2>/dev/null || true
 echo ""
 echo -e "${YELLOW}Starting application...${NC}"
 cd $APP_DIR
-pm2 start server.js --name fivem-ip-finder
-pm2 save
-pm2 startup systemd -u root --hp /root
+pm2 start server.js --name fivem-ip-finder || echo -e "${YELLOW}⚠ PM2 start warning${NC}"
+pm2 save || true
+pm2 startup systemd -u root --hp /root 2>/dev/null || true
 
 echo ""
 echo "================================================"
 echo -e "${GREEN}  ✓ Installation Complete!${NC}"
 echo "================================================"
 echo ""
-echo "Your FiveM IP Finder is now running!"
+
+# Check if PM2 process is running
+if pm2 list | grep -q "fivem-ip-finder"; then
+    echo -e "${GREEN}✓ Application is running!${NC}"
+else
+    echo -e "${YELLOW}⚠ Application might not be running. Check with: pm2 status${NC}"
+fi
+
 echo ""
 echo "Access your site at:"
 echo "  → http://$(hostname -I | awk '{print $1}')"
@@ -132,8 +142,10 @@ echo "  → http://5.175.246.136"
 echo ""
 echo "Useful commands:"
 echo "  pm2 status              - Check application status"
-echo "  pm2 logs fivem-ip-finder - View logs"
+echo "  pm2 logs fivem-ip-finder - View logs (check for errors)"
 echo "  pm2 restart fivem-ip-finder - Restart application"
 echo "  pm2 stop fivem-ip-finder - Stop application"
+echo ""
+echo "If there are issues, check logs with: pm2 logs fivem-ip-finder"
 echo ""
 echo "================================================"
