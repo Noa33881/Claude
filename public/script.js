@@ -1,5 +1,25 @@
-// Load translations
-let currentLang = localStorage.getItem('preferredLanguage') || 'en';
+// Detect browser language automatically
+function detectBrowserLanguage() {
+    // Supported languages in our app
+    const supportedLanguages = ['en', 'tr', 'da', 'es', 'fr', 'de', 'pt', 'ru', 'pl', 'it', 'nl'];
+
+    // Get browser language (e.g., "tr-TR", "en-US", "da-DK")
+    const browserLang = navigator.language || navigator.userLanguage;
+
+    // Extract the main language code (e.g., "tr" from "tr-TR")
+    const langCode = browserLang.split('-')[0].toLowerCase();
+
+    // Check if we support this language
+    if (supportedLanguages.includes(langCode)) {
+        return langCode;
+    }
+
+    // Default to English if language not supported
+    return 'en';
+}
+
+// Load translations - auto-detect language if not set
+let currentLang = localStorage.getItem('preferredLanguage') || detectBrowserLanguage();
 
 // DOM Elements
 const serverInput = document.getElementById('serverInput');
@@ -18,6 +38,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Set initial language
     languageSelect.value = currentLang;
+
+    // Save detected language to localStorage
+    if (!localStorage.getItem('preferredLanguage')) {
+        localStorage.setItem('preferredLanguage', currentLang);
+    }
 
     // Create stars
     createStars();
