@@ -227,9 +227,16 @@ function displayPlayers(players) {
     players.forEach((player, index) => {
         const playerItem = document.createElement('div');
         playerItem.className = 'player-item';
+
+        const ping = player.ping ? `${player.ping}ms` : 'N/A';
+        const pingColor = player.ping ? (player.ping < 50 ? '#10b981' : player.ping < 100 ? '#f59e0b' : '#ef4444') : '#6b7280';
+
         playerItem.innerHTML = `
-            <span class="player-icon">👤</span>
-            <span class="player-name">${escapeHtml(player.name || `Player ${index + 1}`)}</span>
+            <div class="player-info">
+                <span class="player-icon">👤</span>
+                <span class="player-name">${escapeHtml(player.name || `Player ${index + 1}`)}</span>
+            </div>
+            <span class="player-ping" style="color: ${pingColor}">${ping}</span>
         `;
         playersList.appendChild(playerItem);
     });
@@ -247,41 +254,77 @@ function escapeHtml(text) {
     return text.replace(/[&<>"']/g, m => map[m]);
 }
 
-// Copy to clipboard function
+// Copy to clipboard function - FIXED
 function copyToClipboard(elementId) {
     const element = document.getElementById(elementId);
-    const text = element.textContent;
+    if (!element) {
+        console.error('Element not found:', elementId);
+        return;
+    }
 
-    navigator.clipboard.writeText(text).then(() => {
-        // Visual feedback
-        const originalText = element.textContent;
-        element.textContent = t('copied');
-        element.style.color = '#10b981';
+    const text = element.textContent || element.innerText;
 
-        setTimeout(() => {
-            element.textContent = originalText;
-            element.style.color = '#e0e6ff';
-        }, 2000);
-    }).catch(err => {
-        console.error('Copy error:', err);
+    // Try modern clipboard API first
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+            showCopySuccess(element);
+        }).catch(err => {
+            console.error('Clipboard API failed:', err);
+            fallbackCopy(text, element);
+        });
+    } else {
         // Fallback for older browsers
-        const textArea = document.createElement('textarea');
-        textArea.value = text;
-        textArea.style.position = 'fixed';
-        textArea.style.opacity = '0';
-        document.body.appendChild(textArea);
-        textArea.select();
-        try {
-            document.execCommand('copy');
-            element.textContent = t('copied');
-            setTimeout(() => {
-                element.textContent = originalText;
-            }, 2000);
-        } catch (err) {
-            alert('Copy failed');
+        fallbackCopy(text, element);
+    }
+}
+
+// Fallback copy method
+function fallbackCopy(text, element) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.top = '0';
+    textArea.style.left = '0';
+    textArea.style.width = '2em';
+    textArea.style.height = '2em';
+    textArea.style.padding = '0';
+    textArea.style.border = 'none';
+    textArea.style.outline = 'none';
+    textArea.style.boxShadow = 'none';
+    textArea.style.background = 'transparent';
+    textArea.style.opacity = '0';
+
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+
+    try {
+        const successful = document.execCommand('copy');
+        if (successful) {
+            showCopySuccess(element);
+        } else {
+            alert('Kopyalama başarısız oldu!');
         }
-        document.body.removeChild(textArea);
-    });
+    } catch (err) {
+        console.error('Fallback copy failed:', err);
+        alert('Kopyalama desteklenmiyor!');
+    }
+
+    document.body.removeChild(textArea);
+}
+
+// Show copy success feedback
+function showCopySuccess(element) {
+    const originalText = element.textContent;
+    const copyText = t ? t('copied') : 'Copied!';
+
+    element.textContent = copyText;
+    element.style.color = '#10b981';
+
+    setTimeout(() => {
+        element.textContent = originalText;
+        element.style.color = '#e0e6ff';
+    }, 2000);
 }
 
 // UI Helper functions
