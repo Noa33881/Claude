@@ -64,15 +64,16 @@ body::before {
 
 .meteor {
     position: absolute;
-    top: -100px;
+    top: -150px;
     left: var(--left, 50%);
-    width: 3px;
-    height: 80px;
+    width: 6px;
+    height: 150px;
     background: linear-gradient(
         to bottom,
         rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.8) 50%,
-        rgba(124, 58, 237, 0.6) 100%
+        rgba(255, 255, 255, 1) 40%,
+        rgba(147, 51, 234, 0.9) 70%,
+        rgba(124, 58, 237, 0.7) 100%
     );
     border-radius: 50%;
     transform: rotate(45deg);
@@ -80,8 +81,9 @@ body::before {
     animation-delay: var(--delay, 0s);
     opacity: 0;
     box-shadow:
-        0 0 10px 2px rgba(255, 255, 255, 0.5),
-        0 0 20px 4px rgba(124, 58, 237, 0.4);
+        0 0 20px 5px rgba(255, 255, 255, 0.9),
+        0 0 40px 10px rgba(147, 51, 234, 0.7),
+        0 0 60px 15px rgba(124, 58, 237, 0.5);
 }
 
 .meteor::before {
@@ -90,15 +92,16 @@ body::before {
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 100%;
+    width: 120%;
     height: 100%;
     background: linear-gradient(
         to bottom,
         rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.4) 50%,
-        rgba(102, 126, 234, 0.3) 100%
+        rgba(255, 255, 255, 0.7) 40%,
+        rgba(147, 51, 234, 0.6) 70%,
+        rgba(102, 126, 234, 0.4) 100%
     );
-    filter: blur(3px);
+    filter: blur(5px);
 }
 
 .meteor::after {
@@ -107,13 +110,14 @@ body::before {
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 6px;
-    height: 6px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    background: #fff;
+    background: radial-gradient(circle, #fff 0%, rgba(255, 255, 255, 0.8) 50%, rgba(147, 51, 234, 0.6) 100%);
     box-shadow:
-        0 0 20px 4px rgba(255, 255, 255, 0.8),
-        0 0 30px 6px rgba(124, 58, 237, 0.6);
+        0 0 30px 8px rgba(255, 255, 255, 1),
+        0 0 50px 12px rgba(147, 51, 234, 0.8),
+        0 0 70px 16px rgba(124, 58, 237, 0.6);
 }
 
 @keyframes twinkle {
