@@ -105,6 +105,48 @@ function updateLanguage() {
 
     // Update HTML lang attribute
     document.documentElement.lang = currentLang;
+
+    // Update FAQ section
+    renderFAQ(lang);
+}
+
+// Render FAQ items dynamically
+function renderFAQ(lang) {
+    const faqList = document.getElementById('faqList');
+    if (!faqList || !lang.faq) return;
+
+    faqList.innerHTML = '';
+
+    lang.faq.forEach((item, index) => {
+        const faqItem = document.createElement('div');
+        faqItem.className = 'faq-item';
+        faqItem.innerHTML = `
+            <button class="faq-question" onclick="toggleFAQ(this)" aria-expanded="false">
+                <span>${escapeHtml(item.q)}</span>
+                <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">${escapeHtml(item.a)}</div>
+        `;
+        faqList.appendChild(faqItem);
+    });
+}
+
+// Toggle FAQ accordion
+function toggleFAQ(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+
+    // Close all
+    document.querySelectorAll('.faq-item.open').forEach(el => {
+        el.classList.remove('open');
+        el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+    });
+
+    // Open clicked if it was closed
+    if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+    }
 }
 
 // Update SEO meta tags

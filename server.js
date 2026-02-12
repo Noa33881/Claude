@@ -5,7 +5,7 @@ const path = require('path');
 const analytics = require('./analytics');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 80;
 
 // Middleware
 app.use(cors());

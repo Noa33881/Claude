@@ -61,6 +61,56 @@
     }
     </script>
 
+    <!-- FAQ Structured Data -->
+    <script type="application/ld+json" id="faqSchema">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is FiveM IP Finder?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "FiveM IP Finder is a free online tool that lets you find the real IP address and port of any FiveM server using its CFX.re URL or server ID."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I use FiveM IP Finder?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Paste the CFX.re URL (e.g. cfx.re/join/abc123) or just the server ID into the search box and click 'Find IP'. The server IP, port, and player list will appear instantly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is FiveM IP Finder free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! FiveM IP Finder is completely free with no registration, no limits, and no hidden fees."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What URL formats are supported?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We support full URL (https://cfx.re/join/abc123), short URL (cfx.re/join/abc123), and just the server ID (abc123)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why can't the server IP be found?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The server may be offline, the server ID is incorrect, or the server was recently removed. Make sure you have the correct server ID from the FiveM server browser."
+          }
+        }
+      ]
+    }
+    </script>
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -186,6 +236,12 @@
                 <p id="errorMessage"></p>
             </div>
         </main>
+
+        <!-- FAQ Section -->
+        <section class="faq-section" id="faqSection" aria-label="Frequently Asked Questions">
+            <h2 class="faq-title" id="faqTitle" data-i18n="faq_title">Frequently Asked Questions</h2>
+            <div class="faq-list" id="faqList"></div>
+        </section>
 
         <footer>
             <p data-i18n="footer_text">Professional tool for finding FiveM server IP addresses</p>
