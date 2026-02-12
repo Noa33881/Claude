@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FiveM Tools | Free Server Utilities</title>
+    <meta name="description" content="Free FiveM tools and utilities. Find server IPs, check server status, and more. The best free tools for FiveM players and server owners.">
+    <meta name="keywords" content="fivem tools, fivem ip finder, fivem server tools, cfx.re tools, gta v fivem, fivem utilities">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://fivem-tools.com/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="FiveM Tools | Free Server Utilities">
+    <meta property="og:description" content="Free FiveM tools and utilities for players and server owners.">
+    <meta property="og:type" content="website">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            background: #0a0e27;
+            min-height: 100vh;
+            color: #e0e6ff;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+            z-index: -2;
+        }
+
+        /* Stars */
+        .stars { position: fixed; inset: 0; pointer-events: none; z-index: -1; overflow: hidden; }
+        .star {
+            position: absolute;
+            width: 2px; height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* Meteors */
+        .meteors { position: fixed; inset: 0; pointer-events: none; z-index: -1; overflow: hidden; }
+        .meteor {
+            position: absolute;
+            top: -150px;
+            left: var(--left, 50%);
+            width: 6px; height: 150px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 40%, rgba(147,51,234,0.9) 70%, rgba(124,58,237,0.7) 100%);
+            border-radius: 50%;
+            transform: rotate(45deg);
+            animation: meteorFall var(--duration, 2s) linear infinite;
+            animation-delay: var(--delay, 0s);
+            opacity: 0;
+            box-shadow: 0 0 20px 5px rgba(255,255,255,0.9), 0 0 40px 10px rgba(147,51,234,0.7);
+        }
+        .meteor::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #fff 0%, rgba(147,51,234,0.6) 100%);
+            box-shadow: 0 0 30px 8px rgba(255,255,255,1), 0 0 50px 12px rgba(147,51,234,0.8);
+        }
+        @keyframes meteorFall {
+            0% { transform: translateY(0) translateX(0) rotate(45deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(100vh) translateX(-100vh) rotate(45deg); opacity: 0; }
+        }
+
+        /* Layout */
+        header {
+            text-align: center;
+            padding: 80px 20px 40px;
+        }
+
+        header h1 {
+            font-size: 3em;
+            font-weight: 800;
+            background: linear-gradient(135deg, #c4b5fd, #7c3aed, #4f46e5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Tools Grid */
+        .tools-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+
+        .tools-section h2 {
+            text-align: center;
+            font-size: 1.5em;
+            color: #c4b5fd;
+            margin-bottom: 32px;
+            letter-spacing: 0.5px;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .tool-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            border-radius: 20px;
+            padding: 32px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(124,58,237,0.08), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .tool-card:hover {
+            border-color: rgba(124, 58, 237, 0.7);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(124, 58, 237, 0.2);
+        }
+
+        .tool-card:hover::before { opacity: 1; }
+
+        .tool-icon {
+            font-size: 2.5em;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .tool-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #7c3aed, #4f46e5);
+            color: white;
+            font-size: 0.75em;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tool-badge.soon {
+            background: rgba(100, 116, 139, 0.4);
+            color: #94a3b8;
+        }
+
+        .tool-card h3 {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #e0e6ff;
+            margin-bottom: 10px;
+        }
+
+        .tool-card p {
+            color: #94a3b8;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .tool-arrow {
+            margin-top: 20px;
+            color: #7c3aed;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .tool-card:hover .tool-arrow { transform: translateX(6px); }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #475569;
+            border-top: 1px solid rgba(124, 58, 237, 0.1);
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="starsContainer"></div>
+
+    <div class="meteors">
+        <div class="meteor" style="--delay: 0s; --duration: 2s; --left: 10%;"></div>
+        <div class="meteor" style="--delay: 1.5s; --duration: 2.5s; --left: 30%;"></div>
+        <div class="meteor" style="--delay: 3s; --duration: 2s; --left: 55%;"></div>
+        <div class="meteor" style="--delay: 4.5s; --duration: 2.3s; --left: 75%;"></div>
+        <div class="meteor" style="--delay: 2s; --duration: 2.8s; --left: 90%;"></div>
+        <div class="meteor" style="--delay: 0.8s; --duration: 2.2s; --left: 45%;"></div>
+    </div>
+
+    <header>
+        <h1>⚡ FiveM Tools</h1>
+        <p>Free, fast and professional utilities for FiveM players and server owners.</p>
+    </header>
+
+    <main class="tools-section">
+        <h2>Available Tools</h2>
+        <div class="tools-grid">
+
+            <!-- FiveM IP Finder -->
+            <a href="/fivem-ip-finder" class="tool-card">
+                <span class="tool-icon">🔍</span>
+                <span class="tool-badge">Free</span>
+                <h3>FiveM IP Finder</h3>
+                <p>Find the real IP address and port of any FiveM server using its CFX.re URL or server ID. Supports all formats.</p>
+                <span class="tool-arrow">Use Tool →</span>
+            </a>
+
+            <!-- Server Status Checker (coming soon) -->
+            <div class="tool-card" style="cursor: default;">
+                <span class="tool-icon">📡</span>
+                <span class="tool-badge soon">Coming Soon</span>
+                <h3>Server Status Checker</h3>
+                <p>Check if a FiveM server is online or offline, view uptime history, and get real-time player counts.</p>
+            </div>
+
+            <!-- Player Lookup (coming soon) -->
+            <div class="tool-card" style="cursor: default;">
+                <span class="tool-icon">👤</span>
+                <span class="tool-badge soon">Coming Soon</span>
+                <h3>Player Lookup</h3>
+                <p>Search for players across FiveM servers. Check playtime, server history and more.</p>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>FiveM Tools &mdash; Free utilities for the FiveM community</p>
+    </footer>
+
+    <script>
+        // Create stars
+        const container = document.getElementById('starsContainer');
+        for (let i = 0; i < 150; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.cssText = `
+                left: ${Math.random() * 100}%;
+                top: ${Math.random() * 100}%;
+                width: ${Math.random() * 3 + 1}px;
+                height: ${Math.random() * 3 + 1}px;
+                animation-delay: ${Math.random() * 3}s;
+                animation-duration: ${Math.random() * 3 + 2}s;
+                opacity: ${Math.random() * 0.7 + 0.3};
+            `;
+            container.appendChild(star);
+        }
+    </script>
+</body>
+</html>

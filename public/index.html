@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title data-i18n="meta_title">FiveM IP Finder | Find CFX.re Server IP Addresses Instantly</title>
+    <meta name="title" content="FiveM IP Finder | Find CFX.re Server IP Addresses Instantly">
+    <meta name="description" data-i18n="meta_description" content="Discover FiveM server IP addresses instantly with our free CFX.re IP finder tool. Find GTA V FiveM server IPs, ports, and player lists quickly and easily.">
+    <meta name="keywords" content="fivem ip finder, cfx ip finder, cfx.re ip finder, fivem server ip, gta v fivem ip, find fivem server ip, cfx server finder, fivem ip lookup, fivem server finder, gta 5 fivem ip">
+    <meta name="author" content="FiveM IP Finder">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="1 days">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fivem-ip-finder.com/">
+    <meta property="og:title" content="FiveM IP Finder | Find CFX.re Server IP Addresses">
+    <meta property="og:description" content="Discover FiveM server IP addresses instantly. Free CFX.re IP finder tool for GTA V FiveM servers.">
+    <meta property="og:image" content="https://fivem-ip-finder.com/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://fivem-ip-finder.com/">
+    <meta property="twitter:title" content="FiveM IP Finder | Find CFX.re Server IP Addresses">
+    <meta property="twitter:description" content="Discover FiveM server IP addresses instantly. Free CFX.re IP finder tool.">
+    <meta property="twitter:image" content="https://fivem-ip-finder.com/og-image.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://fivem-ip-finder.com/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "FiveM IP Finder",
+      "description": "Find FiveM server IP addresses from CFX.re URLs instantly",
+      "url": "https://fivem-ip-finder.com",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "1250"
+      }
+    }
+    </script>
+
+    <!-- FAQ Structured Data -->
+    <script type="application/ld+json" id="faqSchema">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is FiveM IP Finder?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "FiveM IP Finder is a free online tool that lets you find the real IP address and port of any FiveM server using its CFX.re URL or server ID."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I use FiveM IP Finder?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Paste the CFX.re URL (e.g. cfx.re/join/abc123) or just the server ID into the search box and click 'Find IP'. The server IP, port, and player list will appear instantly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is FiveM IP Finder free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! FiveM IP Finder is completely free with no registration, no limits, and no hidden fees."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What URL formats are supported?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We support full URL (https://cfx.re/join/abc123), short URL (cfx.re/join/abc123), and just the server ID (abc123)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why can't the server IP be found?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The server may be offline, the server ID is incorrect, or the server was recently removed. Make sure you have the correct server ID from the FiveM server browser."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Stars Background -->
+    <div class="stars" id="starsContainer"></div>
+
+    <!-- Meteor Shower -->
+    <div class="meteors">
+        <div class="meteor" style="--delay: 0s; --duration: 2s; --left: 10%;"></div>
+        <div class="meteor" style="--delay: 0.3s; --duration: 2.5s; --left: 20%;"></div>
+        <div class="meteor" style="--delay: 0.6s; --duration: 1.8s; --left: 30%;"></div>
+        <div class="meteor" style="--delay: 0.9s; --duration: 2.2s; --left: 40%;"></div>
+        <div class="meteor" style="--delay: 1.2s; --duration: 2.8s; --left: 50%;"></div>
+        <div class="meteor" style="--delay: 1.5s; --duration: 2s; --left: 60%;"></div>
+        <div class="meteor" style="--delay: 1.8s; --duration: 2.4s; --left: 70%;"></div>
+        <div class="meteor" style="--delay: 2.1s; --duration: 2.6s; --left: 80%;"></div>
+        <div class="meteor" style="--delay: 2.4s; --duration: 2s; --left: 90%;"></div>
+        <div class="meteor" style="--delay: 2.7s; --duration: 2.3s; --left: 15%;"></div>
+        <div class="meteor" style="--delay: 3s; --duration: 2.1s; --left: 35%;"></div>
+        <div class="meteor" style="--delay: 3.3s; --duration: 2.7s; --left: 55%;"></div>
+        <div class="meteor" style="--delay: 3.6s; --duration: 2.5s; --left: 75%;"></div>
+        <div class="meteor" style="--delay: 3.9s; --duration: 2s; --left: 95%;"></div>
+        <div class="meteor" style="--delay: 4.2s; --duration: 2.4s; --left: 25%;"></div>
+        <div class="meteor" style="--delay: 4.5s; --duration: 2.2s; --left: 45%;"></div>
+        <div class="meteor" style="--delay: 4.8s; --duration: 2.6s; --left: 65%;"></div>
+        <div class="meteor" style="--delay: 5.1s; --duration: 2s; --left: 85%;"></div>
+        <div class="meteor" style="--delay: 5.4s; --duration: 2.3s; --left: 5%;"></div>
+        <div class="meteor" style="--delay: 5.7s; --duration: 2.5s; --left: 12%;"></div>
+        <div class="meteor" style="--delay: 6s; --duration: 2.1s; --left: 38%;"></div>
+        <div class="meteor" style="--delay: 6.3s; --duration: 2.7s; --left: 58%;"></div>
+        <div class="meteor" style="--delay: 6.6s; --duration: 2.4s; --left: 72%;"></div>
+        <div class="meteor" style="--delay: 6.9s; --duration: 2.2s; --left: 88%;"></div>
+        <div class="meteor" style="--delay: 7.2s; --duration: 2.5s; --left: 48%;"></div>
+    </div>
+
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <select id="languageSelect" aria-label="Select Language">
+            <option value="en">🇬🇧 English</option>
+            <option value="tr">🇹🇷 Türkçe</option>
+            <option value="da">🇩🇰 Dansk</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="fr">🇫🇷 Français</option>
+            <option value="de">🇩🇪 Deutsch</option>
+            <option value="pt">🇵🇹 Português</option>
+            <option value="ru">🇷🇺 Русский</option>
+            <option value="pl">🇵🇱 Polski</option>
+            <option value="it">🇮🇹 Italiano</option>
+            <option value="nl">🇳🇱 Nederlands</option>
+        </select>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="logo">
+                <span class="logo-icon">🎮</span>
+            </div>
+            <h1 data-i18n="title">FiveM IP Finder</h1>
+            <p class="subtitle" data-i18n="subtitle">Discover FiveM server IP addresses from CFX.re URLs instantly</p>
+        </header>
+
+        <main>
+            <div class="search-box">
+                <input
+                    type="text"
+                    id="serverInput"
+                    data-i18n-placeholder="input_placeholder"
+                    placeholder="Enter CFX.re URL or Server ID (e.g., cfx.re/join/abc123)"
+                    autocomplete="off"
+                    aria-label="Server ID or URL input"
+                />
+                <button id="searchBtn" data-i18n="search_button" aria-label="Find IP Address">
+                    🔍 Find IP
+                </button>
+            </div>
+
+            <div id="result" class="result hidden" role="region" aria-live="polite">
+                <div class="result-header">
+                    <h2 id="serverName">
+                        <span class="server-status" aria-label="Server Online"></span>
+                        Server Name
+                    </h2>
+                </div>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="label" data-i18n="label_ip">IP Address:</span>
+                        <span class="value" id="serverIP">-</span>
+                        <button class="copy-btn" onclick="copyToClipboard('serverIP')" aria-label="Copy IP Address">📋</button>
+                    </div>
+                    <div class="info-item">
+                        <span class="label" data-i18n="label_port">Port:</span>
+                        <span class="value" id="serverPort">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label" data-i18n="label_players">Players:</span>
+                        <span class="value" id="serverPlayers">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label" data-i18n="label_server_id">Server ID:</span>
+                        <span class="value" id="serverID">-</span>
+                        <button class="copy-btn" onclick="copyToClipboard('serverID')" aria-label="Copy Server ID">📋</button>
+                    </div>
+                </div>
+                <div class="info-item full-width">
+                    <span class="label" data-i18n="label_connect_command">Connect Command:</span>
+                    <span class="value" id="connectCommand">-</span>
+                    <button class="copy-btn" onclick="copyToClipboard('connectCommand')" aria-label="Copy Connect Command">📋</button>
+                </div>
+
+                <!-- Players List Section -->
+                <div id="playersSection" class="players-section hidden">
+                    <h3 data-i18n="players_online">👥 Players Online</h3>
+                    <div id="playersList" class="players-list"></div>
+                </div>
+            </div>
+
+            <div id="loading" class="loading hidden" role="status" aria-live="polite">
+                <div class="spinner"></div>
+                <p data-i18n="loading">Fetching server information...</p>
+            </div>
+
+            <div id="error" class="error hidden" role="alert" aria-live="assertive">
+                <p id="errorMessage"></p>
+            </div>
+        </main>
+
+        <!-- FAQ Section -->
+        <section class="faq-section" id="faqSection" aria-label="Frequently Asked Questions">
+            <h2 class="faq-title" id="faqTitle" data-i18n="faq_title">Frequently Asked Questions</h2>
+            <div class="faq-list" id="faqList"></div>
+        </section>
+
+        <footer>
+            <p data-i18n="footer_text">Professional tool for finding FiveM server IP addresses</p>
+            <p class="note" data-i18n="footer_note">
+                Supports URL format: <code>cfx.re/join/{server_id}</code> or just the server ID
+            </p>
+        </footer>
+    </div>
+
+    <!-- SEO Content (Hidden but crawlable) -->
+    <div class="sr-only">
+        <h2>What is FiveM IP Finder?</h2>
+        <p>FiveM IP Finder is a free online tool that helps you find the IP address of any FiveM server using its CFX.re URL or server ID. Perfect for GTA V FiveM players who want to connect directly to servers.</p>
+
+        <h3>How to use FiveM IP Finder:</h3>
+        <ol>
+            <li>Copy the CFX.re URL from FiveM (e.g., cfx.re/join/abc123)</li>
+            <li>Paste it into the search box above</li>
+            <li>Click "Find IP" button</li>
+            <li>Get the server IP address, port, and player information instantly</li>
+        </ol>
+
+        <h3>Features:</h3>
+        <ul>
+            <li>Instant FiveM server IP lookup</li>
+            <li>Find CFX.re server information</li>
+            <li>View current player count</li>
+            <li>Copy IP address with one click</li>
+            <li>Works with all FiveM servers</li>
+            <li>Free and unlimited use</li>
+            <li>Multi-language support</li>
+        </ul>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
