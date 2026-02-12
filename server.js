@@ -5,7 +5,7 @@ const path = require('path');
 const analytics = require('./analytics');
 
 const app = express();
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());
@@ -21,8 +21,13 @@ app.use((req, res, next) => {
     next();
 });
 
-// Serve static files
+// Serve homepage
 app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'home.html'));
+});
+
+// FiveM IP Finder tool
+app.get('/fivem-ip-finder', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
